@@ -4,6 +4,7 @@ import * as THREE from "three/build/three.module";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 // Orbit
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
+import { loader } from "./util/loader";
 
 let camera, scene, renderer;
 let axis, light;
@@ -21,7 +22,10 @@ const orbitConfig = {
   enableZoom: true
 };
 
-const init = () => {
+const init = async () => {
+  const data = await loader(
+    "https://amahai.heteml.net/work/times/models/desk_v2.glb"
+  );
   const inputElement = document.getElementById("upload");
   inputElement.addEventListener(
     "change",
